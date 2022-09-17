@@ -14,7 +14,11 @@ def main():
         print("7. Salir del programa\n")
         op = int(input("Ingrese el numero de opción"))
         if op== 1:
-            crearContacto()
+            numero = int(input("Ingrese el numero de telefonos"))
+            nombre = int(input("Ingrese el nombre"))
+            direccion = int(input("Ingrese la direccion"))
+            crearContacto(numero,nombre, direccion )
+        
     
 
 #Iniciar programa
