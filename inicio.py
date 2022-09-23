@@ -1,5 +1,5 @@
 from persona import persona
-misContactos = []
+misContactos = [persona(412,'Carlos', 'casa 1'), persona(542,'Sara', 'casa 2')]
 
 
 def crearContacto(numero, nombre, direccion):
@@ -22,6 +22,63 @@ def buscarContacto(nombre):
         if encontrado == False:
             print("Dato no existente...")
 
+def mostrarContactos():
+    if len(misContactos) == 0:
+        print("La lista esta vacia, no hay contactos que buscar...")
+    else:
+        for i in range(len(misContactos)):
+            print('Nombre:', misContactos[i].verNombre(),'Direccion', misContactos[i].verDireccion(), 'Numero', misContactos[i].verNumero()) 
+
+def modificarContacto(nombre):
+    if len(misContactos) == 0:
+        print("La lista esta vacía, no hay contactos que buscar")
+    else:
+        encontrado = False
+        posicion = None
+        for i in range(len(misContactos)):
+            if misContactos[i].verNombre() == nombre:
+               posicion = i
+               encontrado = True
+               break
+            else:
+                encontrado = False
+        if encontrado == False:
+            nuevoNumero = int(input("Ingrese el nuevo numero:"))
+            nuevoNombre = int(input("Ingrese el nuevo nombre:"))
+            nuevoDireccion = int(input("Ingrese la nueva direccion:"))
+            misContactos[posicion]. modificarNumero(nuevoNumero)
+            misContactos[posicion]. modificarNombre(nuevoNombre)
+            misContactos[posicion]. modificarDireccion(nuevoDireccion)
+            print("Datos actualizados con éxito...")
+        else:
+            print("Dato no encontrado...")
+
+def  eliminarContacto(nombre):
+    if len(misContactos) == 0:
+        print("La lista esta vacía, no hay contactos que buscar")
+    else:
+        encontrado = False
+        posicion = None
+        for i in range(len(misContactos)):
+            if misContactos[i].verNombre() == nombre:
+               posicion = i
+               encontrado = True
+               break
+            else:
+                encontrado = False
+        if encontrado == False:
+           misContactos[posicion].pop(posicion)
+           print("Datos eliminados con éxito...")
+        else:
+            print("Dato no encontrado...")
+
+def crearReporte():
+    print("Creando reporte HTML")
+
+
+
+
+
 def main():
     op = 0
     while op != 7:
@@ -42,7 +99,20 @@ def main():
         elif op == 2:
             nombre = input("Ingrese el nombre del contacto a buscar")
             buscarContacto(nombre)
-        
+        elif op == 3:
+            mostrarContactos()
+        elif op == 4:
+            nombre = input("Ingrese el nombre del contacto:")
+            modificarContacto(nombre)
+        elif op == 5: 
+            nombre = input("Ingrese el nombre del contacto:")
+            eliminarContacto(nombre)
+        elif op == 6:
+            crearReporte()
+        elif op == 7:
+            print("programa finalisado...")
+        else:
+            print("Opcion incorrecta...")
     
 
 #Iniciar programa
