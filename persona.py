@@ -27,3 +27,5 @@ class persona():
     #Creacion de SETTERS
     def modificarDireccion(self, nuevoDireccion):
         self.direccion = nuevoDireccion
+
+
